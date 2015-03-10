@@ -5,12 +5,22 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th>
+      Number of Prescriptions
+    </th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
   <% @patients.each do |patient| %>
     <tr>
       <td><%= link_to full_name(patient), patient %></td>
+      <td>
+        <%= patient.prescriptions.count %>
+      </td>
+      <td align="right">
+        <%= link_to "Delete", patient_path(patient), method: 'delete' %>
+      </td>
     </tr>
   <% end %>
   </tbody>
@@ -21,12 +31,16 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
   <% @medications.each do |medication| %>
       <tr>
         <td><%= link_to medication.name, medication %></td>
+        <td align="right">
+          <%= link_to "Delete", medication_path(medication), method: 'delete' %>
+        </td>
       </tr>
   <% end %>
   </tbody>
